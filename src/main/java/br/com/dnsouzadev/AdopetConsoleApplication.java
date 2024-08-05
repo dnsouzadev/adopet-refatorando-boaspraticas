@@ -1,5 +1,6 @@
 package br.com.dnsouzadev;
 
+import br.com.dnsouzadev.client.ClientHttpConfiguration;
 import br.com.dnsouzadev.service.AbrigoService;
 import br.com.dnsouzadev.service.PetService;
 
@@ -7,8 +8,9 @@ import java.util.Scanner;
 
 public class AdopetConsoleApplication {
     public static void main(String[] args) {
-        AbrigoService abrigoService = new AbrigoService();
-        PetService petService = new PetService();
+        var client = new ClientHttpConfiguration();
+        var abrigoService = new AbrigoService(client);
+        PetService petService = new PetService(client);
         System.out.println("##### BOAS VINDAS AO SISTEMA ADOPET CONSOLE #####");
         try {
             int opcaoEscolhida = 0;
