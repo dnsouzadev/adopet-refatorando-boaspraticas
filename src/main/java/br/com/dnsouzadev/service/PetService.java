@@ -1,6 +1,7 @@
 package br.com.dnsouzadev.service;
 
 import br.com.dnsouzadev.client.ClientHttpConfiguration;
+import br.com.dnsouzadev.domain.Pet;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -66,18 +67,12 @@ public class PetService {
             String raca = campos[2];
             int idade = Integer.parseInt(campos[3]);
             String cor = campos[4];
-            Float peso = Float.parseFloat(campos[5]);
+            float peso = Float.parseFloat(campos[5]);
 
-            JsonObject json = new JsonObject();
-            json.addProperty("tipo", tipo.toUpperCase());
-            json.addProperty("nome", nome);
-            json.addProperty("raca", raca);
-            json.addProperty("idade", idade);
-            json.addProperty("cor", cor);
-            json.addProperty("peso", peso);
+            Pet pet = new Pet(tipo, nome, raca, idade, cor, peso);
 
             String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
-            HttpResponse<String> response = clientHttpConfiguration.dispararRequisicaoPost(uri, json);
+            HttpResponse<String> response = clientHttpConfiguration.dispararRequisicaoPost(uri, pet);
             int statusCode = response.statusCode();
             String responseBody = response.body();
             if (statusCode == 200) {
