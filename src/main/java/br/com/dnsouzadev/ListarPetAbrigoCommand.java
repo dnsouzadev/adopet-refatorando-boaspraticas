@@ -5,7 +5,7 @@ import br.com.dnsouzadev.service.PetService;
 
 import java.io.IOException;
 
-public class ListarPetServico implements Command {
+public class ListarPetAbrigoCommand implements Command {
 
     @Override
     public void execute() {
